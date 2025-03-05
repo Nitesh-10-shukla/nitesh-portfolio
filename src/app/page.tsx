@@ -6,7 +6,6 @@ import HeroSection from "@/components/homepage/hero-section/HeroSection";
 import Projects from "@/components/homepage/projects/Projects";
 import Resume from "@/components/homepage/resume/Resume";
 import Skills from "@/components/homepage/skills/Skills";
-import Image from "next/image";
 
 export default function Home() {
   return (

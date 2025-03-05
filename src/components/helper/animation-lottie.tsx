@@ -1,7 +1,6 @@
 "use client"
 
 import Lottie from "lottie-react";
-import { ReactNode } from "react";
 
 type GlowCardProps = {
   animationPath: any;
