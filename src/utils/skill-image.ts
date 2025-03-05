@@ -6,7 +6,6 @@ import vitejs from '@/assets/svg/skills/vitejs.svg';
 import nodejs from '@/assets/svg/skills/node.svg';
 import express from '@/assets/svg/skills/express.svg';
 import nextJS from '@/assets/svg/skills/nextJS.svg';
-import tanstack from '@/assets/tenstack.png';
 import redux from '@/assets/svg/skills/redux.svg';
 import cicd from '@/assets/svg/skills/cicd.svg';
 import stripe from '@/assets/svg/skills/stripe.svg';
@@ -42,7 +41,7 @@ export const getSkillImage = (icon: string) => {
     'mongodb': mongoDB,
     'graphql': graphql,
     'apollo': graphql,
-    'tanstack': tanstack,
+    'tanstack': '/tenstack.png',
     'jest': jest,
     'mysql': mysql,
     'git': git,
