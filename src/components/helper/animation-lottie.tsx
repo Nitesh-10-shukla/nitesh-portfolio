@@ -1,22 +1,9 @@
 "use client"
 
-import Lottie from "lottie-react";
-
-type GlowCardProps = {
-  animationPath: any;
-};
-const AnimationLottie = ({ animationPath }:GlowCardProps) => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationPath,
-    style: {
-      width: '95%',
-    }
-  };
+const AnimationLottie = () => {
 
   return (
-    <Lottie {...defaultOptions} />
+   <div>a</div>
   );
 };
 
