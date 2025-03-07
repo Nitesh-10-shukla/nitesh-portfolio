@@ -3,8 +3,7 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
-
-const ScrollToTop = dynamic(() => import("./helper/scroll-to-top"), { ssr: false });
+import ScrollToTop from "./helper/scroll-to-top";
 
 export default function ClientProviders() {
   return (
