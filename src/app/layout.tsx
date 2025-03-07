@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientProviders from "@/components/ClientProviders";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer";
 import '../css/card.scss';
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased` } suppressHydrationWarning
       >
-        <ClientProviders />
         <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
           <Navbar />
           {children}
