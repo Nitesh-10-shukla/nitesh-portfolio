@@ -1,9 +1,13 @@
 "use client"
 
-const AnimationLottie = () => {
+type GlowCardProps = {
+  animationPath: any;
+};
+const AnimationLottie = ({ animationPath }:GlowCardProps) => {
+  console.log(animationPath)
 
   return (
-   <div>a</div>
+    <div>re</div>
   );
 };
 
