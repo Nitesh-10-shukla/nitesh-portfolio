@@ -56,6 +56,7 @@ function Education() {
                         width={1080}
                         height={200}
                         className="absolute bottom-0 opacity-80"
+                        unoptimized
                       />
                       <div className="flex justify-center">
                         <p className="text-xs sm:text-sm text-[#16f2b3]">

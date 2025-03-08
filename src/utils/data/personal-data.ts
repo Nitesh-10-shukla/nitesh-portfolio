@@ -1,6 +1,6 @@
 export const personalData = {
   name: "Nitesh Shukla",
-  profile: process.env.NEXT_PUBLIC_PROFILE_URL,
+  profile: process.env.NEXT_PUBLIC_PROFILE_URL ?? '',
   designation: "Software Developer",
   description: "I’m Nitesh Shukla, a software developer with over 3 years of experience building high-performance, scalable web applications using JavaScript, React.js, Next.js, and TypeScript. I specialize in full-stack development, leveraging modern frameworks and tools to deliver optimized, user-focused solutions. My work includes accelerating application performance by 15%, streamlining development cycles by 20% with reusable components, and maintaining 95% test coverage. I thrive on solving complex problems, integrating APIs like GraphQL and Twilio, and collaborating across teams in Agile environments. I’m seeking opportunities where I can apply my technical expertise to drive innovation and impactful outcomes.",
   email: 'niteshshukla1696@gmail.com',

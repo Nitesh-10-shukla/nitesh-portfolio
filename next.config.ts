@@ -4,8 +4,13 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/css')],
   },
-  output: 'export',
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        pathname: "/fsa7z1ahgp/**",
+      },
+    ],
   },
 };

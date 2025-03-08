@@ -1,7 +1,7 @@
 // @flow strict
-import Link from 'next/link';
 import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
+import CustomLink from "./ui/CustomLink";
 
 function Footer() {
   return (
@@ -12,25 +12,25 @@ function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/nitesh-shukla-32a9051b6" className="text-[#16f2b3]">Nitesh Shukla</Link>
+            © Developer Portfolio by <CustomLink target="_blank" href="https://www.linkedin.com/in/nitesh-shukla-32a9051b6" className="text-[#16f2b3]">Nitesh Shukla</CustomLink>
           </p>
           <div className="flex items-center gap-5">
-            <Link
+            <CustomLink
               target="_blank"
               href="https://github.com/Nitesh-10-shukla"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <IoStar />
               <span>Star</span>
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               target="_blank"
               href="https://github.com/Nitesh-10-shukla/fork"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <CgGitFork />
               <span>Fork</span>
-            </Link>
+            </CustomLink>
           </div>
         </div>
       </div>

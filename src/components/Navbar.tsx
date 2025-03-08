@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CustomLink from "./ui/CustomLink";
 
 const navLinks = [
   { href: "/#about", label: "ABOUT" },
@@ -14,9 +14,9 @@ function Navbar() {
     <nav className="bg-transparent">
       <div className="flex items-center justify-between py-5">
         <div className="flex flex-shrink-0 items-center">
-          <Link href="/" className="text-[#16f2b3] text-3xl font-bold">
+          <CustomLink href="/" className="text-[#16f2b3] text-3xl font-bold">
             Nitesh Shukla
-          </Link>
+          </CustomLink>
         </div>
         <ul
           id="navbar-default"
@@ -25,14 +25,14 @@ function Navbar() {
         >
           {navLinks.map(({ href, label }) => (
             <li key={href}>
-              <Link
+              <CustomLink
                 href={href}
                 className="block px-4 py-2 no-underline outline-none hover:no-underline"
               >
                 <span className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
                   {label}
                 </span>
-              </Link>
+              </CustomLink>
             </li>
           ))}
         </ul>

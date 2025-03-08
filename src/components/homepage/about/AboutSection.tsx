@@ -22,12 +22,14 @@ function AboutSection() {
         </div>
         <div className="flex justify-center order-1 lg:order-2">
           <Image
-            src={personalData.profile ?? ''}
+            src={personalData.profile ?? "https://ik.imagekit.io/fsa7z1ahgp/NBS.jpg"}
             width={420}
             height={320}
-            unoptimized
+            quality={80}
             alt="Nitesh Shukla"
             className="rounded-lg transition-all object-contain duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 420px"
+            priority
           />
         </div>
       </div>
