@@ -8,26 +8,26 @@ import axiosInstance from "@/utils/api/axiosInstance";
 interface UserInput {
   name: string;
   email: string;
-  number: string;
+  mobile: string;
   message: string;
 }
 
 interface Errors {
   name?: string;
   email?: string;
-  number?: string;
+  mobile?: string;
   message?: string;
   form?: string;
 }
 
-const INITIAL_STATE: UserInput = { name: "", email: "", number: "", message: "" };
+const INITIAL_STATE: UserInput = { name: "", email: "", mobile: "", message: "" };
 
 const validateField = (name: keyof UserInput, value: string): string => {
   if (!value.trim()) return `${name} is required`;
   const rules: Record<keyof UserInput, { min?: number; max?: number; valid?: boolean; message: string }> = {
     name: { min: 2, max: 100, message: "Name must be between 2 and 100 characters" },
     email: { valid: isValidEmail(value), message: "Please enter a valid email" },
-    number: {
+    mobile: {
       min: 7,
       max: 15,
       valid: /^[0-9+\-\s()]*$/.test(value),
@@ -62,7 +62,7 @@ const ContactForm: React.FC = () => {
     const newErrors: Errors = {
       name: validateField("name", userInput.name),
       email: validateField("email", userInput.email),
-      number: validateField("number", userInput.number),
+      mobile: validateField("mobile", userInput.mobile),
       message: validateField("message", userInput.message),
     };
     setErrors(newErrors);
@@ -92,7 +92,7 @@ const ContactForm: React.FC = () => {
       <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
         <p className="text-sm text-[#d3d8e8]">If you have any questions or opportunities, feel free to reach out.</p>
         <form ref={formRef} onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4" aria-label="Contact Form">
-          {(["name", "email", "number", "message"] as (keyof UserInput)[]).map((field) => (
+          {(["name", "email", "mobile", "message"] as (keyof UserInput)[]).map((field) => (
             <div key={field} className="flex flex-col gap-2">
               <label htmlFor={field} className="text-base capitalize">Your {field}:</label>
               {field === "message" ? (
@@ -113,9 +113,9 @@ const ContactForm: React.FC = () => {
                 <input
                   id={field}
                   name={field}
-                  type={field === "email" ? "email" : field === "number" ? "tel" : "text"}
+                  type={field === "email" ? "email" : field === "mobile" ? "tel" : "text"}
                   className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
-                  maxLength={field === "number" ? 15 : 100}
+                  maxLength={field === "mobile" ? 15 : 100}
                   value={userInput[field]}
                   onChange={handleChange}
                   disabled={isLoading}
