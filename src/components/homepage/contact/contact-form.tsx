@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, ChangeEvent, FormEvent, useRef } from "react";
-import axios from "axios";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { isValidEmail } from "@/utils/check-email";
+import axiosInstance from "@/utils/api/axiosInstance";
 
 interface UserInput {
   name: string;
@@ -70,7 +70,7 @@ const ContactForm: React.FC = () => {
 
     try {
       setIsLoading(true);
-      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`, userInput);
+      await axiosInstance.post(`/api/contacts/contact`, userInput);
       toast.success("Message sent successfully!");
       setUserInput(INITIAL_STATE);
       setErrors({});

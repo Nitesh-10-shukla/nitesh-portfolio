@@ -11,13 +11,15 @@ import { personalData } from "@/utils/data/personal-data";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap", 
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -45,6 +47,20 @@ export const metadata: Metadata = {
     description:
       "Explore the work of Nitesh, a full-stack developer with a passion for innovation and problem-solving.",
     images: [personalData?.profile],
+  },
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Nitesh Shukla",
+      jobTitle: "Full-Stack Developer",
+      url: "https://niteshverse.vercel.app/",
+      sameAs: [
+        "https://github.com/Nitesh-10-shukla",
+        "https://www.linkedin.com/in/nitesh-shukla-32a9051b6",
+        "https://twitter.com/NiteshS84273251",
+      ],
+    }),
   },
 };
 
