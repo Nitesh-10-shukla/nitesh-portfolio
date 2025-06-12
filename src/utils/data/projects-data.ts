@@ -8,15 +8,24 @@ export const projectsData = [
         code: '',
         demo: 'https://guidetoeurope.com/',
     },
-    {
-        id: 2,
-        name: 'Promolytics',
-        description: "Developed a comprehensive SaaS application for Promolytics, a platform that empowers brands to create dynamic, customizable survey forms with a drag-and-drop builder. Users can create and style forms, add validation, and modify themes, headers, and footers. The app generates unique QR codes for each form to promote brands effectively. Additionally, I implemented campaign creation and redemption functionalities, and integrated SMS functionality for enhanced communication, promoting user engagement.",
-        tools: ['React', 'Vite', 'TailwindCSS', 'TypeScript', 'Python', 'Django', 'SQL', 'GCP', 'Twilio (SMS)', 'Instagram API'],
-        role: 'Frontend Developer',
-        code: '',
-        demo: 'https://devui.promolytics.net/login',
-    },
+    // {
+    //     id: 2,
+    //     name: 'Promolytics',
+    //     description: "Developed a comprehensive SaaS application for Promolytics, a platform that empowers brands to create dynamic, customizable survey forms with a drag-and-drop builder. Users can create and style forms, add validation, and modify themes, headers, and footers. The app generates unique QR codes for each form to promote brands effectively. Additionally, I implemented campaign creation and redemption functionalities, and integrated SMS functionality for enhanced communication, promoting user engagement.",
+    //     tools: ['React', 'Vite', 'TailwindCSS', 'TypeScript', 'Python', 'Django', 'SQL', 'GCP', 'Twilio (SMS)', 'Instagram API'],
+    //     role: 'Frontend Developer',
+    //     code: '',
+    //     demo: 'https://devui.promolytics.net/login',
+    // },
+{
+  id: 2,
+  name: 'Nexlify Tech – Company Website',
+  description: `Designed and developed the official website for Nexlify Tech, a modern frontend-driven company platform. Built with React and Vite, the site is optimized for speed, SEO, and scalability. It includes multilingual support using i18next, custom form validation via Formik + Yup, smooth animations with Framer Motion, and full PWA support. Integrated analytics tracking with Google Analytics 4 and structured data for SEO. Also implemented sitemap generation and performance optimizations for better Core Web Vitals.`,
+  tools: ['React', 'Vite', 'TailwindCSS', 'TypeScript', 'Formik', 'Yup', 'i18next', 'React Router', 'Framer Motion', 'Helmet Async', 'GA4', 'PWA'],
+  role: 'Full Stack Developer',
+  code: '',
+  demo: 'https://nexlifytech.in'
+},
     {
         id: 3,
         name: 'Walead',
@@ -44,6 +53,15 @@ export const projectsData = [
         role: 'Frontend Developer',
         code: '',
         demo: 'https://timesascent.com/',
-    }
+    },
+   {
+        id: 6,
+       name: 'Promolytics (B2B SaaS)',
+    description: "Developed a feature-rich survey and campaign management platform as part of a professional team. The app includes a drag-and-drop form builder, dynamic styling options, campaign creation, QR code generation, and SMS integration using Twilio. My role focused on creating modular, responsive UI components and enhancing UX across the app. This was a live production project built with React, Tailwind CSS, and TypeScript, in collaboration with a Python/Django backend.",
+    tools: ['React', 'Vite', 'TailwindCSS', 'TypeScript', 'Python', 'Django', 'SQL', 'GCP', 'Twilio (SMS)', 'Instagram API'],
+    role: 'Frontend Developer',
+    code: '',
+    demo: 'Demo available upon request due to NDA',
+    },
 ];
 
