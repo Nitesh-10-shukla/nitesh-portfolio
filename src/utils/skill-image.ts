@@ -24,15 +24,23 @@ import bootstrap from '@/assets/svg/skills/bootstrap.svg';
 import figma from '@/assets/svg/skills/figma.svg';
 import materialui from '@/assets/svg/skills/materialui.svg';
 import linux from '@/assets/svg/skills/linux.svg'
+import postgresql from '@/assets/svg/skills/postgresql.svg';
+import pytorch from '@/assets/svg/skills/pytorch.svg';
+import python from '@/assets/svg/skills/python.svg';
 
 export const getSkillImage = (icon: string) => {
   const skillIcon = icon.toLowerCase();
-  const skillImages:any = {
+  const skillImages: any = {
     'html': html,
     'css': css,
     'javascript': javascript,
     'typescript': typescript,
+    'postgresql': postgresql,
+    'nestjs': nodejs,
+    'python': python,
+    'pytorch': pytorch,
     'react': react,
+    'react native': react,
     'vitejs': vitejs,
     'nextjs': nextJS,
     'tailwind': tailwind,
@@ -56,7 +64,7 @@ export const getSkillImage = (icon: string) => {
     'sql': mysql,
     'seo': seo,
     'oauth': oauth,
-    'linux':linux
+    'linux': linux
   };
 
   return skillImages[skillIcon] || defaultIcon;

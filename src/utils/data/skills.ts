@@ -138,6 +138,14 @@ export const skillsData = [
   {
     name: "linux",
     icon: "linux"
+  },
+  {
+    name: "PostgreSQL",
+    icon: "postgresql"
+  },
+  {
+    name: "NestJS",
+    icon: "nestjs"
   }
 ];
 

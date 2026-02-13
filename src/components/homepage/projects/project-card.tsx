@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-function ProjectCard({ project }:{project:Record<string,any>}) {
+function ProjectCard({ project }: { project: Record<string, any> }) {
 
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
@@ -17,30 +17,33 @@ function ProjectCard({ project }:{project:Record<string,any>}) {
           <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
         </div>
         <div className="flex items-center justify-center gap-2 ml-3">
-          <p className="text-center text-[#16f2b3] text-base lg:text-xl">
+          <p className="text-center text-[#16f2b3] text-base lg:text-xl font-semibold">
             {project.name}
           </p>
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visit ${project.name}`}
-          >
-            <svg
-              className="w-5 h-5 text-[#16f2b3] hover:text-pink-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${project.name}`}
+              className="text-[#16f2b3] hover:text-pink-600 transition-colors duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-          </a>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          )}
         </div>
       </div>
       <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
@@ -62,7 +65,7 @@ function ProjectCard({ project }:{project:Record<string,any>}) {
             <span className=" text-white">tools:</span>
             <span className="text-gray-400">{` ['`}</span>
             {
-              project.tools.map((tag: string | number, i: React.Key ) => (
+              project.tools.map((tag: string | number, i: React.Key) => (
                 <React.Fragment key={i}>
                   <span className="text-amber-300">{tag}</span>
                   {

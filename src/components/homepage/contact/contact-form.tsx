@@ -89,7 +89,7 @@ const ContactForm: React.FC = () => {
   return (
     <div>
       <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">Contact Me</p>
-      <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
+      <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5 bg-[#11152c] bg-opacity-50 backdrop-blur-md">
         <p className="text-sm text-[#d3d8e8]">If you have any questions or opportunities, feel free to reach out.</p>
         <form ref={formRef} onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4" aria-label="Contact Form">
           {(["name", "email", "mobile", "message"] as (keyof UserInput)[]).map((field) => (
@@ -100,7 +100,7 @@ const ContactForm: React.FC = () => {
                   id={field}
                   name={field}
                   rows={4}
-                  className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+                  className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2 bg-opacity-80"
                   maxLength={500}
                   value={userInput[field]}
                   onChange={handleChange}
@@ -114,7 +114,7 @@ const ContactForm: React.FC = () => {
                   id={field}
                   name={field}
                   type={field === "email" ? "email" : field === "mobile" ? "tel" : "text"}
-                  className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+                  className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2 bg-opacity-80"
                   maxLength={field === "mobile" ? 15 : 100}
                   value={userInput[field]}
                   onChange={handleChange}
@@ -132,7 +132,7 @@ const ContactForm: React.FC = () => {
           {errors.form && <p className="text-sm capitalize text-red-400">{errors.form}</p>}
           <button
             type="submit"
-            className="flex items-center justify-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-xs md:text-sm font-medium uppercase tracking-wider text-white transition-all duration-200 ease-out hover:text-white disabled:opacity-50"
+            className="flex items-center justify-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-xs md:text-sm font-medium uppercase tracking-wider text-white transition-all duration-200 ease-out hover:text-white disabled:opacity-50 hover:shadow-lg hover:shadow-violet-500/30"
             disabled={isLoading}
             aria-busy={isLoading}
           >

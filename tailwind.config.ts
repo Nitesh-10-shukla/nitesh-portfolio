@@ -23,7 +23,10 @@ module.exports = {
             "3xl": "5rem",
           },
         },
-  
+        colors: {
+            "violet-500": "#8b5cf6",
+            "pink-500": "#ec4899",
+        },
         extend: {
           screens: {
             "4k": "1980px",
