@@ -21,11 +21,11 @@ function Footer() {
         <div className="flex justify-center -z-40">
           <div className="absolute top-0 h-[1px] w-1/2  bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
           <p className="text-sm">
             © Developer Portfolio by <CustomLink target="_blank" href="https://www.linkedin.com/in/nitesh-shukla-32a9051b6" className="text-[#16f2b3] underline decoration-[#16f2b3]/50 hover:decoration-[#16f2b3]">Nitesh Shukla</CustomLink>
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-5">
             <CustomLink
               target="_blank"
               href="https://github.com/Nitesh-10-shukla"

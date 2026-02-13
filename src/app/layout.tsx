@@ -69,6 +69,18 @@ export default function RootLayout({
       <head>
         {/* Preload hero image so browser fetches it immediately — this is the LCP element */}
         <link rel="preload" href="/hero.svg" as="image" type="image/svg+xml" />
+        {/* PWA manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#0d1224" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        {/* Register SW after page load so it never impacts performance */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')})}`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0d1224] text-white selection:bg-[#ec4899] selection:text-white`}
