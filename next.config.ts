@@ -1,6 +1,7 @@
-const path = require('path');
+import type { NextConfig } from "next";
+import path from "path";
 
-module.exports = {
+const nextConfig: NextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/css')],
   },
@@ -8,9 +9,18 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "media.dev.to",
+      },
+      {
+        protocol: "https",
         hostname: "ik.imagekit.io",
-        pathname: "/fsa7z1ahgp/**",
       },
     ],
   },
 };
+
+export default nextConfig;

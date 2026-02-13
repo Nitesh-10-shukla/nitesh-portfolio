@@ -23,13 +23,12 @@ function HeroSection() {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, <br />
-            This is {' '}
-            <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
-            .
+            Full Stack Product Engineer <br />
+            <span className=" text-[#16f2b3]">{`React & Next.js Specialist`}</span>
           </h1>
+          <p className="mt-4 text-base text-gray-400 md:text-lg lg:text-xl">
+            Focused on building scalable, high-performance web applications.
+          </p>
 
           <div className="my-12 flex items-center gap-5">
             <CustomLink
@@ -64,23 +63,21 @@ function HeroSection() {
 
           <div className="flex items-center gap-6">
             <CustomLink
-              href="#contact"
+              href="#projects"
               className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600"
             >
               <button className="px-3 md:px-8 py-4 bg-[#0d1224] rounded-full border-none text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white transition-all duration-200 ease-out md:font-semibold flex items-center gap-1 hover:gap-3 min-h-[44px]">
-                <span>Contact Me</span>
-                <RiContactsFill size={16} />
+                <span>View Projects</span>
+                <MdDownload size={16} />
               </button>
             </CustomLink>
 
             <CustomLink
-              href={personalData.resume ?? ""}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold min-h-[44px]"
             >
-              <span>Get Resume</span>
-              <MdDownload size={16} />
+              <span>Contact Me</span>
+              <RiContactsFill size={16} />
             </CustomLink>
           </div>
 

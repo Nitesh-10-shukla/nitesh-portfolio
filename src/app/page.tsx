@@ -24,6 +24,7 @@ export default function Home() {
           <Projects />
           <Resume />
           <Education />
+          {/* <Blog /> */}
           <ContactSection />
         </Suspense>
       </ErrorBoundary>

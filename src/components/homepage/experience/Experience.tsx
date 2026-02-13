@@ -1,15 +1,11 @@
-'use client'
+// @flow strict
+
 import { experiences } from "@/utils/data/experience";
 import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
-import experience from '../../../assets/lottie/code.json';
-import dynamic from "next/dynamic";
-const GlowCard = dynamic(() => import("../../helper/glow-card"), {
-  ssr: false,
-});
-const AnimationLottie = dynamic(() => import("@/components/helper/animation-lottie"), {
-  ssr: false,
-});
+import AnimationLottie from "../../helper/animation-lottie";
+import experience from '@/assets/lottie/code.json';
+import GlowCard from "../../helper/glow-card";
 
 function Experience() {
   return (
@@ -35,47 +31,52 @@ function Experience() {
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex justify-center items-start">
-            <div className="w-full h-full">
+            <div className="w-full h-full max-w-md">
               <AnimationLottie animationPath={experience} />
             </div>
           </div>
 
           <div>
-            <div className="flex flex-col gap-6">
-              {
-                experiences.map(experience => (
-                  <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
-                    <div className="p-3 relative">
-                        <Image
-                          src="/blur-23.svg"
-                          alt={experience.title}
-                          width={1080}
-                          height={200}
-                          className="absolute bottom-0 opacity-80"
-                          priority
-                        />
+            <div className="flex flex-col gap-6 relative">
+              {/* Timeline Line */}
+              <div className="absolute left-[30px] top-0 bottom-0 w-[2px] bg-[#2a2e5a]"></div>
+
+              {experiences.map((experience) => (
+                <div key={experience.id} className="relative pl-16 group">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-[21px] top-6 w-5 h-5 bg-[#0d1224] border-[3px] border-violet-500 rounded-full z-10 group-hover:bg-violet-500 transition-colors duration-300"></div>
+
+                  <GlowCard identifier={`experience-${experience.id}`}>
+                    <div className="p-3 relative bg-[#1b203e] bg-opacity-40 backdrop-blur-sm rounded-xl">
+                      <Image
+                        src="/blur-23.svg"
+                        alt="Hero"
+                        width={1080}
+                        height={200}
+                        className="absolute bottom-0 opacity-80"
+                      />
                       <div className="flex justify-center">
                         <p className="text-xs sm:text-sm text-[#16f2b3]">
                           {experience.duration}
                         </p>
                       </div>
                       <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
+                        <div className="text-violet-500 transition-all duration-300 hover:scale-125">
                           <BsPersonWorkspace size={36} />
                         </div>
                         <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
+                          <p className="text-base sm:text-xl mb-2 font-medium uppercase text-white">
                             {experience.title}
                           </p>
-                          <p className="text-sm sm:text-base">
+                          <p className="text-sm sm:text-base text-gray-300">
                             {experience.company}
                           </p>
                         </div>
                       </div>
                     </div>
                   </GlowCard>
-                ))
-              }
+                </div>
+              ))}
             </div>
           </div>
         </div>

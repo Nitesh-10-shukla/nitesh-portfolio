@@ -23,19 +23,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nitesh | Full-Stack Developer Portfolio",
+  title: "Nitesh Shukla | Full-Stack Product Engineer",
   description:
-    "Welcome to Nitesh's portfolio! A passionate self-taught full-stack developer who thrives on learning, collaboration, and tackling new challenges. Let's build something amazing together!",
+    "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
   openGraph: {
-    title: "Nitesh | Full-Stack Developer Portfolio",
+    title: "Nitesh Shukla | Full-Stack Product Engineer",
     description:
-      "Explore the work of Nitesh, a full-stack developer with a passion for innovation and problem-solving.",
+      "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
     images: [
       {
         url: personalData?.profile,
         width: 1200,
         height: 630,
-        alt: "Portfolio preview of Nitesh",
+        alt: "Nitesh Shukla Portfolio",
       },
     ],
     type: "website",
@@ -43,24 +43,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nitesh | Full-Stack Developer Portfolio",
+    title: "Nitesh Shukla | Full-Stack Product Engineer",
     description:
-      "Explore the work of Nitesh, a full-stack developer with a passion for innovation and problem-solving.",
+      "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
     images: [personalData?.profile],
   },
-  other: {
-    "application/ld+json": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Nitesh Shukla",
-      jobTitle: "Full-Stack Developer",
-      url: "https://niteshverse.vercel.app/",
-      sameAs: [
-        "https://github.com/Nitesh-10-shukla",
-        "https://www.linkedin.com/in/nitesh-shukla-32a9051b6",
-        "https://twitter.com/NiteshS84273251",
-      ],
-    }),
+  keywords: ["Nitesh Shukla", "Full Stack Developer", "Next.js", "React", "Node.js", "Product Engineer", "Software Engineer"],
+  authors: [{ name: "Nitesh Shukla", url: "https://niteshverse.vercel.app/" }],
+  creator: "Nitesh Shukla",
+  metadataBase: new URL("https://niteshverse.vercel.app"),
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -72,15 +65,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0d1224] text-white selection:bg-[#ec4899] selection:text-white`}
         suppressHydrationWarning
       >
-        <ClientProviders/>
-          <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
-            <Navbar />
+        <ClientProviders>
+          <Navbar />
+          <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white pt-20">
             {children}
           </main>
           <Footer />
+        </ClientProviders>
       </body>
     </html>
   );
