@@ -12,7 +12,7 @@ const CustomLink: React.FC<CustomLinkProps> = ({ href, children, className = "",
   return (
     <Link
       href={href}
-      className={`no-underline outline-none transition-all duration-300 hover:text-pink-600 hover:underline focus:text-pink-600 focus:underline focus:outline-none ${className}`}
+      className={`underline decoration-current/30 hover:decoration-current outline-none transition-all duration-300 hover:text-pink-600 focus:text-pink-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1224] ${className}`}
       {...rest}
     >
       {children}
