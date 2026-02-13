@@ -20,7 +20,6 @@
     "next": "^16.1.6",
     "nodemailer": "^6.9.15",
     "react": "^19.0.0",
-    "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
     "react-fast-marquee": "^1.6.2",

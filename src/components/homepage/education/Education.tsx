@@ -15,10 +15,11 @@ function Education() {
     <div id="education" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
       <Image
         src="/section.svg"
-        alt="Hero"
+        alt="Education section background"
         width={1572}
         height={795}
         className="absolute top-0 -z-10"
+        loading="lazy"
       />
       <div className="flex justify-center -translate-y-[1px]">
         <div className="w-3/4">
@@ -52,11 +53,13 @@ function Education() {
                     <div className="p-3 relative text-white">
                       <Image
                         src="/blur-23.svg"
-                        alt="Hero"
+                        alt="Card background blur"
                         width={1080}
                         height={200}
                         className="absolute bottom-0 opacity-80"
                         unoptimized
+                        loading="lazy"
+                        aria-hidden="true"
                       />
                       <div className="flex justify-center">
                         <p className="text-xs sm:text-sm text-[#16f2b3]">

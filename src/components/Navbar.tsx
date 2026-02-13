@@ -16,7 +16,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 py-3 sm:py-4 bg-opacity-80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 py-3 sm:py-4 bg-[#0d1224]/90 backdrop-blur-md border-b border-white/10" role="navigation" aria-label="Main navigation">
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           <Link href="/" className="text-[#16f2b3] text-2xl font-bold tracking-wider">
@@ -41,7 +41,9 @@ function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
         >
           <svg
             className="w-6 h-6"
@@ -77,7 +79,7 @@ function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-sm font-medium text-white hover:text-[#16f2b3] transition-colors duration-300 uppercase tracking-widest"
+                    className="block text-sm font-medium text-white hover:text-[#16f2b3] transition-colors duration-300 uppercase tracking-widest py-2 min-h-[44px] flex items-center"
                   >
                     {link.name}
                   </Link>
