@@ -4,8 +4,11 @@ import "./globals.css";
 import "../css/card.scss";
 import ClientProviders from "@/components/ClientProviders";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/footer";
+import dynamic from "next/dynamic";
 import { personalData } from "@/utils/data/personal-data";
+
+// Footer is below the fold, lazy load it
+const Footer = dynamic(() => import("@/components/footer"), { ssr: true });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +21,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: true,
+  preload: false, // Only used in hero code block, defer loading
 });
 
 export const metadata: Metadata = {
@@ -63,6 +66,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Preload hero image so browser fetches it immediately — this is the LCP element */}
+        <link rel="preload" href="/hero.svg" as="image" type="image/svg+xml" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0d1224] text-white selection:bg-[#ec4899] selection:text-white`}
         suppressHydrationWarning
