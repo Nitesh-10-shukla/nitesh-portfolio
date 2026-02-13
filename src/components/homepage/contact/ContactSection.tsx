@@ -80,28 +80,28 @@ function ContactSection() {
         </div>
 
         <div className="mt-12 lg:mt-16 flex items-center gap-6 lg:gap-10">
-          <Link target="_blank" href={personalData.github}
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+          <Link target="_blank" href={personalData.github} aria-label="GitHub profile"
+            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             <IoLogoGithub size={32} />
           </Link>
-          <Link target="_blank" href={personalData.linkedIn}
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+          <Link target="_blank" href={personalData.linkedIn} aria-label="LinkedIn profile"
+            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             <BiLogoLinkedin size={32} />
           </Link>
-          <Link target="_blank" href={personalData.twitter}
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+          <Link target="_blank" href={personalData.twitter} aria-label="Twitter profile"
+            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             <FaXTwitter size={32} />
           </Link>
-          <Link target="_blank" href={personalData.facebook}
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+          <Link target="_blank" href={personalData.facebook} aria-label="Facebook profile"
+            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             <FaFacebook size={32} />
           </Link>
-          <Link target="_blank" href={personalData.instagram}
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+          <Link target="_blank" href={personalData.instagram} aria-label="Instagram profile"
+            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             <CiInstagram size={32} />
           </Link>

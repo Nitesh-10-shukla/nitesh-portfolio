@@ -18,7 +18,8 @@ function Footer() {
             <CustomLink
               target="_blank"
               href="https://github.com/Nitesh-10-shukla"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
+              className="flex items-center gap-2 uppercase hover:text-[#16f2b3] hover:underline min-h-[44px]"
+              aria-label="Star this project on GitHub"
             >
               <IoStar />
               <span>Star</span>
@@ -26,7 +27,8 @@ function Footer() {
             <CustomLink
               target="_blank"
               href="https://github.com/Nitesh-10-shukla/fork"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
+              className="flex items-center gap-2 uppercase hover:text-[#16f2b3] hover:underline min-h-[44px]"
+              aria-label="Fork this project on GitHub"
             >
               <CgGitFork />
               <span>Fork</span>

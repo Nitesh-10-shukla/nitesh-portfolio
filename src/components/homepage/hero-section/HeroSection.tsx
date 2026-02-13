@@ -34,28 +34,32 @@ function HeroSection() {
             <CustomLink
               href={personalData.github}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="GitHub profile"
             >
               <BsGithub size={30} />
             </CustomLink>
             <CustomLink
               href={personalData.linkedIn}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="LinkedIn profile"
             >
               <BsLinkedin size={30} />
             </CustomLink>
             <CustomLink
               href={personalData.facebook}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Facebook profile"
             >
               <FaFacebook size={30} />
             </CustomLink>
             <CustomLink
               href={personalData.twitter}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Twitter profile"
             >
               <FaTwitterSquare size={30} />
             </CustomLink>
