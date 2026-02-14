@@ -3,7 +3,6 @@ import { useState, useEffect, ChangeEvent, FormEvent, useRef } from "react";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { isValidEmail } from "@/utils/check-email";
-import axiosInstance from "@/utils/api/axiosInstance";
 
 interface UserInput {
   name: string;
@@ -70,13 +69,25 @@ const ContactForm: React.FC = () => {
 
     try {
       setIsLoading(true);
-      await axiosInstance.post(`/api/contacts/contact`, userInput);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contacts/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInput),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || "Failed to send message");
+      }
       toast.success("Message sent successfully!");
       setUserInput(INITIAL_STATE);
       setErrors({});
       formRef.current?.focus();
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || "An unexpected error occurred";
+      const errorMessage = error.message || "An unexpected error occurred";
       setErrors((prev) => ({ ...prev, form: errorMessage }));
       toast.error(errorMessage);
     } finally {

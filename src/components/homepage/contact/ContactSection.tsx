@@ -79,7 +79,7 @@ function ContactSection() {
           </div>
         </div>
 
-        <div className="mt-12 lg:mt-16 flex items-center gap-6 lg:gap-10">
+        <div className="mt-12 lg:mt-16 flex items-center flex-wrap justify-center gap-6 lg:gap-10">
           <Link target="_blank" href={personalData.github} aria-label="GitHub profile"
             className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
