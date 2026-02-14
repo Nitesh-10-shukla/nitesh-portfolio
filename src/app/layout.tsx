@@ -6,6 +6,7 @@ import ClientProviders from "@/components/ClientProviders";
 import Navbar from "@/components/Navbar";
 import dynamic from "next/dynamic";
 import { personalData } from "@/utils/data/personal-data";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Footer is below the fold, lazy load it
 const Footer = dynamic(() => import("@/components/footer"), { ssr: true });
@@ -100,6 +101,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ClientProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
