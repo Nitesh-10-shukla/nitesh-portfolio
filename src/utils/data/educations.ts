@@ -1,20 +1,27 @@
-export const educations = [
+export type Education = {
+  id: number;
+  title: string;
+  institution: string;
+  duration: string;
+};
+
+export const educations: Education[] = [
   {
     id: 1,
-    title: "Bachelor of Technology (B.Tech)",
-    duration: "2017 - 2021",
-    institution: "Goel Instetute Of Technology",
+    title: "B.Tech in Computer Science",
+    institution: "Goel Institute of Technology and Management, Lucknow",
+    duration: "2017 — 2021",
   },
   {
     id: 2,
-    title: "InterMediate",
-    duration: "2016 - 2017",
-    institution: "The Indian public inter college",
+    title: "Intermediate",
+    institution: "The Indian Public Inter College",
+    duration: "2016 — 2017",
   },
   {
     id: 3,
     title: "High School",
-    duration: "2014 - 2015",
     institution: "Green Land Public School",
-  }
-]
+    duration: "2014 — 2015",
+  },
+];

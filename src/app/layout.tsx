@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import "../css/card.scss";
-import ClientProviders from "@/components/ClientProviders";
-import Navbar from "@/components/Navbar";
-import dynamic from "next/dynamic";
-import { personalData } from "@/utils/data/personal-data";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-// Footer is below the fold, lazy load it
-const Footer = dynamic(() => import("@/components/footer"), { ssr: true });
+import "./globals.css";
+import ClientProviders from "@/components/ClientProviders";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
+import { personalData, socialLinks } from "@/utils/data/personal-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,86 +19,156 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: false, // Only used in hero code block, defer loading
+  preload: true,
 });
 
+const TITLE = `${personalData.name} | ${personalData.designation}`;
+const DESCRIPTION =
+  "Full Stack AI Engineer with 4+ years building production SaaS applications in React.js, Next.js and TypeScript — complex dashboards, real-time interfaces and AI-powered products, backed by Node.js, GraphQL and PostgreSQL.";
+
 export const metadata: Metadata = {
-  title: "Nitesh Shukla | Full-Stack Product Engineer",
-  description:
-    "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
+  metadataBase: new URL(personalData.siteUrl),
+  title: {
+    default: TITLE,
+    template: `%s | ${personalData.name}`,
+  },
+  description: DESCRIPTION,
+  keywords: [
+    "Nitesh Shukla",
+    "Full Stack AI Engineer",
+    "Frontend Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Apollo Client",
+    "GraphQL",
+    "Node.js",
+    "NestJS",
+    "PostgreSQL",
+    "RAG",
+    "OpenAI API",
+    "SaaS Dashboards",
+    "Web Performance",
+  ],
+  authors: [{ name: personalData.name, url: personalData.siteUrl }],
+  creator: personalData.name,
+  applicationName: `${personalData.name} Portfolio`,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Nitesh Shukla | Full-Stack Product Engineer",
-    description:
-      "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
-    images: [
-      {
-        url: personalData?.profile,
-        width: 1200,
-        height: 630,
-        alt: "Nitesh Shukla Portfolio",
-      },
-    ],
     type: "website",
-    url: "https://niteshverse.vercel.app/",
+    url: personalData.siteUrl,
+    siteName: `${personalData.name} — Portfolio`,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${personalData.name} — ${personalData.designation}` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nitesh Shukla | Full-Stack Product Engineer",
-    description:
-      "Expert Full Stack Product Engineer specializing in React, Next.js, and Node.js. Building scalable, high-performance web applications.",
-    images: [personalData?.profile],
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
   },
-  keywords: ["Nitesh Shukla", "Full Stack Developer", "Next.js", "React", "Node.js", "Product Engineer", "Software Engineer"],
-  authors: [{ name: "Nitesh Shukla", url: "https://niteshverse.vercel.app/" }],
-  creator: "Nitesh Shukla",
-  metadataBase: new URL("https://niteshverse.vercel.app"),
-  alternates: {
-    canonical: "/",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  verification: {
-    google: "google55f62a6358c15690",
-  },
+  verification: { google: "google55f62a6358c15690" },
   icons: {
-    icon: "/icons/icon-192.png",
-    apple: "/icons/icon-192.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192" }],
   },
+  manifest: "/manifest.json",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#070b18",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+};
+
+/** Person schema so search engines can read the profile directly. */
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personalData.name,
+  jobTitle: personalData.designation,
+  description: DESCRIPTION,
+  url: personalData.siteUrl,
+  email: `mailto:${personalData.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Lucknow", addressCountry: "IN" },
+  sameAs: socialLinks.map((link) => link.href),
+  knowsAbout: [
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "Redux Toolkit",
+    "TanStack Query",
+    "Apollo Client",
+    "Tailwind CSS",
+    "Node.js",
+    "NestJS",
+    "GraphQL",
+    "REST APIs",
+    "PostgreSQL",
+    "MongoDB",
+    "Redis",
+    "Prisma ORM",
+    "pgvector",
+    "OpenAI API",
+    "Retrieval-Augmented Generation",
+    "Chrome Extensions",
+    "Web Performance",
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        {/* Preload hero image so browser fetches it immediately — this is the LCP element */}
-        <link rel="preload" href="/hero.svg" as="image" type="image/svg+xml" />
-        {/* PWA manifest */}
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0d1224" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-        {/* Register SW after page load so it never impacts performance */}
+        {/*
+          Marks that scripting is available before first paint, so the
+          scroll-reveal styles (which hide content) only ever apply when there
+          is JavaScript around to reveal it again.
+        */}
         <script
-          dangerouslySetInnerHTML={{
-            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')})}`,
-          }}
+          dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js')` }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0d1224] text-white selection:bg-[#ec4899] selection:text-white`}
-        suppressHydrationWarning
-      >
+      <body className="antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--color-ink-800)] focus:px-4 focus:py-2.5 focus:text-sm focus:text-[var(--color-accent)]"
+        >
+          Skip to content
+        </a>
+
+        <div className="aurora" aria-hidden />
+
         <ClientProviders>
           <Navbar />
-          <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white pt-20">
+          <main id="main" className="pt-[var(--nav-h)]">
             {children}
           </main>
           <Footer />
         </ClientProviders>
+
         <SpeedInsights />
+        {/* Service worker registers after load so it never competes with first paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}`,
+          }}
+        />
       </body>
     </html>
   );

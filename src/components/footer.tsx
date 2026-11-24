@@ -1,54 +1,71 @@
-// @flow strict
-import CustomLink from "./ui/CustomLink";
+import Link from "next/link";
+import SocialLinks from "./ui/SocialLinks";
+import { personalData } from "@/utils/data/personal-data";
 
-// Inline SVG icons to keep footer out of react-icons bundle
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
+const SITEMAP = [
+  { name: "About", id: "about" },
+  { name: "Impact", id: "achievements" },
+  { name: "Experience", id: "experience" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Education", id: "education" },
+  { name: "Contact", id: "contact" },
+];
 
-const ForkIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
-    <path d="M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm12-2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM7 8v3a4 4 0 0 0 4 4h2a4 4 0 0 0 4-4V8h-2v3a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V8H7z" />
-  </svg>
-);
-
-function Footer() {
+export default function Footer() {
   return (
-    <div className="relative border-t bg-[#0d1224] border-[#353951] text-white">
-      <div className="mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] py-6 lg:py-10">
-        <div className="flex justify-center -z-40">
-          <div className="absolute top-0 h-[1px] w-1/2  bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
-        </div>
-        <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-          <p className="text-sm">
-            © Developer Portfolio by <CustomLink target="_blank" href="https://www.linkedin.com/in/nitesh-shukla-32a9051b6" className="text-[#16f2b3] underline decoration-[#16f2b3]/50 hover:decoration-[#16f2b3]">Nitesh Shukla</CustomLink>
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            <CustomLink
-              target="_blank"
-              href="https://github.com/Nitesh-10-shukla"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3] hover:underline min-h-[44px]"
-              aria-label="Star this project on GitHub"
-            >
-              <StarIcon />
-              <span>Star</span>
-            </CustomLink>
-            <CustomLink
-              target="_blank"
-              href="https://github.com/Nitesh-10-shukla/fork"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3] hover:underline min-h-[44px]"
-              aria-label="Fork this project on GitHub"
-            >
-              <ForkIcon />
-              <span>Fork</span>
-            </CustomLink>
+    <footer className="relative mt-10 border-t border-[var(--color-line-soft)] bg-[rgba(5,7,15,0.6)]">
+      <div className="absolute inset-x-0 top-0 mx-auto h-px w-2/3 bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
+
+      <div className="shell py-12">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+          <div>
+            <Link href="#top" className="inline-flex items-center gap-2.5" aria-label="Back to top">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-violet-600 to-pink-600 font-mono text-sm font-bold text-white">
+                {personalData.initials}
+              </span>
+              <span className="text-sm font-semibold tracking-tight text-[var(--color-fg)]">
+                {personalData.name}
+              </span>
+            </Link>
+            <p className="mt-4 max-w-sm text-[0.85rem] leading-relaxed text-[var(--color-fg-muted)]">
+              {personalData.designation} building production SaaS applications with React.js, Next.js and
+              TypeScript — plus the Node.js, GraphQL and PostgreSQL work behind them.
+            </p>
+            <div className="mt-6">
+              <SocialLinks />
+            </div>
           </div>
+
+          <nav aria-label="Footer">
+            <p className="text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-fg-faint)]">Sections</p>
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5">
+              {SITEMAP.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={`#${item.id}`}
+                    className="text-[0.85rem] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-accent)]"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-[var(--color-line-soft)] pt-6 text-center md:flex-row md:text-left">
+          <p className="text-[0.8rem] text-[var(--color-fg-faint)]">
+            © {new Date().getFullYear()} {personalData.name}. Built with Next.js and Tailwind CSS.
+          </p>
+          <a
+            href={`mailto:${personalData.email}`}
+            className="text-[0.8rem] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            {personalData.email}
+          </a>
         </div>
       </div>
-    </div >
+    </footer>
   );
-};
-
-export default Footer;
+}

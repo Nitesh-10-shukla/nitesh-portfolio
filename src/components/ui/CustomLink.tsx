@@ -1,23 +1,27 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
-interface CustomLinkProps {
+type CustomLinkProps = {
   href: string;
   children: ReactNode;
   className?: string;
-  [key: string]: any;
-}
+} & Omit<ComponentProps<typeof Link>, "href" | "className" | "children">;
 
-const CustomLink: React.FC<CustomLinkProps> = ({ href, children, className = "", ...rest }) => {
-  return (
-    <Link
-      href={href}
-      className={`underline decoration-current/30 hover:decoration-current outline-none transition-all duration-300 hover:text-pink-600 focus:text-pink-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1224] ${className}`}
-      {...rest}
-    >
-      {children}
-    </Link>
-  );
-};
+/**
+ * Link that adds `rel="noopener noreferrer"` whenever it opens a new tab.
+ * Styling is left to the caller so it can be used for both text links and
+ * button-like links.
+ */
+const CustomLink = ({ href, children, className = "", target, ...rest }: CustomLinkProps) => (
+  <Link
+    href={href}
+    target={target}
+    rel={target === "_blank" ? "noopener noreferrer" : undefined}
+    className={`transition-colors duration-300 ${className}`}
+    {...rest}
+  >
+    {children}
+  </Link>
+);
 
 export default CustomLink;

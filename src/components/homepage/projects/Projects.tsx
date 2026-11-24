@@ -1,37 +1,49 @@
-import { projectsData } from '@/utils/data/projects-data';
-import ProjectCard from './project-card';
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ProjectCard, { FeaturedProjectCard } from "./project-card";
+import { projectsData } from "@/utils/data/projects-data";
+import { PROJECTS_DELIVERED } from "@/utils/data/personal-data";
 
-const Projects = () => {
+export default function Projects() {
+  const featured = projectsData.find((project) => project.featured);
+  const rest = projectsData.filter((project) => project !== featured);
 
   return (
-    <div id='projects' className="relative z-50  my-12 lg:my-24">
-      <div className="sticky top-10">
-        <div className="w-[80px] h-[80px] bg-violet-100 rounded-full absolute -top-3 left-0 translate-x-1/2 filter blur-3xl  opacity-30"></div>
-        <div className="flex items-center justify-start relative">
-          <span className="bg-[#1a1443] absolute left-0  w-fit text-white px-5 py-3 text-xl rounded-md">
-            PROJECTS
-          </span>
-          <span className="w-full h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
+    <section id="projects" className="section">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="Selected Work"
+          title={
+            <>
+              Products running in <span className="text-gradient">production</span>
+            </>
+          }
+          lead={`${projectsData.length} of the ${PROJECTS_DELIVERED}+ products I've shipped — the ones I can show publicly, most recent first.`}
+        />
 
-      <div className="pt-24">
-        <div className="flex flex-col gap-6">
-          {projectsData.map((project, index) => (
-            <div
-              id={`sticky-card-${index + 1}`}
-              key={index}
-              className="sticky-card w-full mx-auto max-w-2xl sticky"
-            >
-              <div className="box-border flex items-center justify-center rounded shadow-[0_0_30px_0_rgba(0,0,0,0.3)] transition-all duration-[0.5s]">
-                <ProjectCard project={project} />
-              </div>
-            </div>
-          ))}
+        {featured ? (
+          <Reveal className="mt-12">
+            <FeaturedProjectCard project={featured} />
+          </Reveal>
+        ) : null}
+
+        <div className={`grid gap-5 md:grid-cols-2 ${featured ? "mt-5" : "mt-12"}`}>
+          {rest.map((project, index) => {
+            // A trailing odd card stretches across the row rather than
+            // leaving an obvious hole next to it.
+            const spansRow = index === rest.length - 1 && rest.length % 2 === 1;
+            return (
+              <Reveal
+                key={project.id}
+                delay={(index % 2) * 90}
+                className={`h-full ${spansRow ? "md:col-span-2" : ""}`}
+              >
+                <ProjectCard project={project} wide={spansRow} />
+              </Reveal>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Projects;
+}
