@@ -1,12 +1,9 @@
 /// <reference lib="webworker" />
 
-const CACHE_NAME = 'nitesh-portfolio-v1';
+const CACHE_NAME = 'nitesh-portfolio-v2';
 
 // Only cache critical static assets — keep it lean for performance
-const PRECACHE_URLS = [
-    '/',
-    '/hero.svg',
-];
+const PRECACHE_URLS = ['/'];
 
 // Install: precache critical assets
 self.addEventListener('install', (event) => {

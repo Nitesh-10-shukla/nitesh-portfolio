@@ -1,18 +1,11 @@
-"use client";
-
-import dynamic from "next/dynamic";
+import ScrollProgress from "./helper/scroll-progress";
 import ScrollToTop from "./helper/scroll-to-top";
 
-// Lazy load ToastContainer since it's rarely needed on first render
-const ToastContainer = dynamic(
-  () => import("react-toastify").then((mod) => ({ default: mod.ToastContainer })),
-  { ssr: false }
-);
-
+/** Page-level chrome that sits outside the main content flow. */
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <ToastContainer />
+      <ScrollProgress />
       {children}
       <ScrollToTop />
     </>

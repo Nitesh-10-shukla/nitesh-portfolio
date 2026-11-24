@@ -1,28 +1,10 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ['react-icons', 'react-fast-marquee', 'lottie-react'],
-  },
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'src/css')],
-  },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "media.dev.to",
-      },
-      {
-        protocol: "https",
-        hostname: "ik.imagekit.io",
-      },
-    ],
+    // Where the résumé and any future remote assets are hosted.
+    remotePatterns: [{ protocol: "https", hostname: "ik.imagekit.io" }],
+    formats: ["image/avif", "image/webp"],
   },
   headers: async () => [
     // Security headers for all routes

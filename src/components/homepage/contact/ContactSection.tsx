@@ -1,114 +1,163 @@
-// @flow strict
-import { personalData } from '@/utils/data/personal-data';
-import Link from 'next/link';
-import { BiLogoLinkedin } from "react-icons/bi";
-import { CiInstagram, CiLocationOn } from "react-icons/ci";
-import { FaFacebook } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoMdCall } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import SpotlightCard from "@/components/ui/SpotlightCard";
+import { personalData, socialLinks } from "@/utils/data/personal-data";
+import {
+  ArrowRightIcon,
+  GitHubIcon,
+  LeetCodeIcon,
+  LinkedInIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  XIcon,
+} from "@/components/ui/icons";
 
-function ContactSection() {
-  return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
-      <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          CONTACT
-        </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
-      </div>
+const CHANNELS = [
+  {
+    icon: MailIcon,
+    label: "Email",
+    value: personalData.email,
+    href: `mailto:${personalData.email}`,
+    action: "Write to me",
+  },
+  {
+    icon: PhoneIcon,
+    label: "Phone",
+    value: personalData.phone,
+    href: `tel:${personalData.phoneHref}`,
+    action: "Give me a call",
+  },
+  {
+    icon: MapPinIcon,
+    label: "Location",
+    value: personalData.location,
+    href: null,
+    action: "Open to remote work",
+  },
+];
 
-      <div className="flex flex-col items-center justify-center w-full relative z-10">
-        <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-1/2 translate-x-1/2 filter blur-3xl opacity-20"></div>
+const SOCIAL_ICONS = {
+  github: GitHubIcon,
+  linkedin: LinkedInIcon,
+  x: XIcon,
+  leetcode: LeetCodeIcon,
+} as const;
 
-        <h2 className="font-bold text-2xl lg:text-4xl text-white mb-4 text-center">
-          Get In Touch
-        </h2>
-        <p className="text-gray-400 text-sm lg:text-base max-w-2xl text-center mb-12">
-          I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
-          {/* Email Card */}
-          <div className="group relative p-[2px] rounded-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-violet-600 hover:to-pink-600 transition-all duration-500">
-            <div className="bg-[#0d1224] h-full rounded-2xl p-6 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-violet-500/20 rounded-bl-full -mr-4 -mt-4 transition-all duration-500 group-hover:bg-violet-500/40"></div>
-              <div className="p-4 bg-gray-800/50 rounded-full text-[#16f2b3] group-hover:scale-110 transition-transform duration-300">
-                <MdAlternateEmail size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white">Email</h3>
-              <p className="text-gray-300 text-sm text-center">{personalData.email}</p>
-              <Link
-                href={`mailto:${personalData.email}`}
-                className="mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-violet-600 to-pink-600 text-white text-sm font-medium hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300"
-              >
-                Send Email
-              </Link>
-            </div>
-          </div>
-
-          {/* Phone Card */}
-          <div className="group relative p-[2px] rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 hover:from-pink-500 hover:to-violet-600 transition-all duration-500">
-            <div className="bg-[#0d1224] h-full rounded-2xl p-6 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/20 rounded-bl-full -mr-4 -mt-4 transition-all duration-500 group-hover:bg-blue-500/40"></div>
-              <div className="p-4 bg-gray-800/50 rounded-full text-[#16f2b3] group-hover:scale-110 transition-transform duration-300">
-                <IoMdCall size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white">Phone</h3>
-              <p className="text-gray-300 text-sm text-center">{personalData.phone}</p>
-              <Link
-                href={`tel:${personalData.phone}`}
-                className="mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs lg:text-sm font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
-              >
-                Call Now
-              </Link>
-            </div>
-          </div>
-
-          {/* Address Card */}
-          <div className="group relative p-[2px] rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 hover:from-violet-600 hover:to-pink-600 transition-all duration-500">
-            <div className="bg-[#0d1224] h-full rounded-2xl p-6 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/20 rounded-bl-full -mr-4 -mt-4 transition-all duration-500 group-hover:bg-emerald-500/40"></div>
-              <div className="p-4 bg-gray-800/50 rounded-full text-[#16f2b3] group-hover:scale-110 transition-transform duration-300">
-                <CiLocationOn size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white">Address</h3>
-              <p className="text-gray-300 text-sm text-center">{personalData.address}</p>
-              <div className="mt-2 px-6 py-2 opacity-0">Placeholder</div> {/* Spacer to match height */}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 lg:mt-16 flex items-center flex-wrap justify-center gap-6 lg:gap-10">
-          <Link target="_blank" href={personalData.github} aria-label="GitHub profile"
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            <IoLogoGithub size={32} />
-          </Link>
-          <Link target="_blank" href={personalData.linkedIn} aria-label="LinkedIn profile"
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            <BiLogoLinkedin size={32} />
-          </Link>
-          <Link target="_blank" href={personalData.twitter} aria-label="Twitter profile"
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            <FaXTwitter size={32} />
-          </Link>
-          <Link target="_blank" href={personalData.facebook} aria-label="Facebook profile"
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            <FaFacebook size={32} />
-          </Link>
-          <Link target="_blank" href={personalData.instagram} aria-label="Instagram profile"
-            className="bg-[#8b98a5] p-4 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            <CiInstagram size={32} />
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+/** Social handles, so each link shows what it actually points at. */
+const SOCIAL_HANDLES: Record<string, string> = {
+  GitHub: "Nitesh-10-shukla",
+  LinkedIn: "nitesh-shukla",
+  X: "@NiteshS84273251",
+  LeetCode: "Shuklajiii_07",
 };
 
-export default ContactSection;
+export default function ContactSection() {
+  return (
+    <section id="contact" className="section">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="Contact"
+          align="center"
+          title={
+            <>
+              Let&apos;s build something <span className="text-gradient">worth shipping</span>
+            </>
+          }
+          lead="Hiring, contracting, or just comparing notes on an architecture problem — the fastest way to reach me is email."
+        />
+
+        {/* Primary call to action */}
+        <Reveal delay={120}>
+          <div className="mx-auto mt-10 flex max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+            {/* The address is long, so it shrinks and may wrap on narrow phones. */}
+            <a
+              href={`mailto:${personalData.email}`}
+              className="btn btn-primary whitespace-normal text-[0.72rem] sm:text-[0.82rem]"
+            >
+              {personalData.email}
+              <ArrowRightIcon className="shrink-0 text-base" />
+            </a>
+            <a href={`tel:${personalData.phoneHref}`} className="btn btn-ghost">
+              {personalData.phone}
+              <PhoneIcon className="shrink-0 text-base" />
+            </a>
+          </div>
+        </Reveal>
+
+        {/* Direct channels */}
+        <ul className="mt-12 grid gap-4 md:grid-cols-3">
+          {CHANNELS.map(({ icon: Icon, label, value, href, action }, index) => {
+            const body = (
+              <>
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[rgba(22,242,179,0.1)] text-xl text-[var(--color-accent)] transition-transform duration-300 group-hover:scale-105">
+                  <Icon />
+                </span>
+                <span className="mt-5 block text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-fg-faint)]">
+                  {label}
+                </span>
+                <span className="mt-1.5 block break-words text-[1.02rem] font-medium text-[var(--color-fg)]">
+                  {value}
+                </span>
+                <span className="mt-2 block text-[0.82rem] text-[var(--color-fg-muted)]">{action}</span>
+              </>
+            );
+
+            return (
+              <li key={label}>
+                <Reveal delay={index * 80} className="h-full">
+                  <SpotlightCard className="edge-glow group h-full">
+                    {href ? (
+                      <a href={href} className="block h-full p-6">
+                        {body}
+                      </a>
+                    ) : (
+                      <div className="h-full p-6">{body}</div>
+                    )}
+                  </SpotlightCard>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Profiles */}
+        <Reveal delay={120}>
+          <div className="mt-4">
+            <SpotlightCard className="p-6 sm:p-8">
+              <p className="text-center text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-fg-faint)]">
+                Find me elsewhere
+              </p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {socialLinks.map(({ label, href, icon }) => {
+                  const Icon = SOCIAL_ICONS[icon];
+                  return (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${label} profile (opens in a new tab)`}
+                        className="flex min-h-[3.5rem] items-center gap-3 rounded-xl border border-[var(--color-line-soft)] bg-white/[0.02] px-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(22,242,179,0.45)] hover:bg-[rgba(22,242,179,0.06)]"
+                      >
+                        <span className="text-lg text-[var(--color-fg-muted)] transition-colors duration-300 group-hover:text-[var(--color-accent)]">
+                          <Icon />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-[0.9rem] font-medium text-[var(--color-fg)]">{label}</span>
+                          <span className="block truncate text-[0.75rem] text-[var(--color-fg-muted)]">
+                            {SOCIAL_HANDLES[label]}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </SpotlightCard>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

@@ -1,35 +1,43 @@
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import HeroSection from "@/components/homepage/hero-section/HeroSection";
+
 import FallbackComponent from "@/components/helper/FallbackComponent";
+import HeroSection from "@/components/homepage/hero-section/HeroSection";
+import AboutSection from "@/components/homepage/about/AboutSection";
+import Achievements from "@/components/homepage/achievements/Achievements";
+import Experience from "@/components/homepage/experience/Experience";
+import Skills from "@/components/homepage/skills/Skills";
+import Projects from "@/components/homepage/projects/Projects";
+import Education from "@/components/homepage/education/Education";
+import Resume from "@/components/homepage/resume/Resume";
+import ContactSection from "@/components/homepage/contact/ContactSection";
 
-// Lazy load ALL below-fold sections for mobile performance
-const AboutSection = dynamic(() => import("@/components/homepage/about/AboutSection"), { ssr: true });
-const Experience = dynamic(() => import("@/components/homepage/experience/Experience"), { ssr: true });
-const Skills = dynamic(() => import("@/components/homepage/skills/Skills"), { ssr: true });
-const Projects = dynamic(() => import("@/components/homepage/projects/Projects"), { ssr: true });
-const Resume = dynamic(() => import("@/components/homepage/resume/Resume"), { ssr: true });
-const Education = dynamic(() => import("@/components/homepage/education/Education"), { ssr: true });
-const ContactSection = dynamic(() => import("@/components/homepage/contact/ContactSection"), { ssr: true });
+/**
+ * Experience lengths and "years shipping" are derived from the current date,
+ * so the static page is regenerated once a day rather than freezing at the
+ * moment of the last deploy.
+ */
+export const revalidate = 86400;
 
+/**
+ * Every section is a server component and ships as static HTML; the only
+ * client code is the handful of interactive leaves (nav, filters, counters,
+ * reveal observers, contact form), so there is nothing to lazy-load.
+ */
 export default function Home() {
   return (
-    <main className="min-h-screen scroll-smooth">
-      <ErrorBoundary FallbackComponent={FallbackComponent}>
-        <HeroSection />
-        <Suspense fallback={null}>
-          <AboutSection />
-          <Experience />
-          <Skills />
-        </Suspense>
-        <Suspense fallback={null}>
-          <Projects />
-          <Resume />
-          <Education />
-          <ContactSection />
-        </Suspense>
-      </ErrorBoundary>
-    </main>
+    <ErrorBoundary FallbackComponent={FallbackComponent}>
+      <HeroSection />
+      <div className="shell">
+        <div className="rule" />
+      </div>
+      <AboutSection />
+      <Achievements />
+      <Experience />
+      <Skills />
+      <Projects />
+      <Education />
+      <Resume />
+      <ContactSection />
+    </ErrorBoundary>
   );
 }
